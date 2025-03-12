@@ -1,0 +1,100 @@
+<!-- api/static/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Recommendation API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .endpoint {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Furniture Recommendation API</h1>
+    <p>This API provides furniture recommendations using three different approaches:</p>
+    <ul>
+        <li>Content-based filtering (similar items)</li>
+        <li>Collaborative filtering (user-based)</li>
+        <li>Hybrid recommendations (combining both approaches with style matching)</li>
+    </ul>
+
+    <h2>Endpoints</h2>
+
+    <div class="endpoint">
+        <h3>Content-Based Recommendations</h3>
+        <p>Get recommendations for items similar to a specified item.</p>
+        <p><strong>URL:</strong> <code>/api/content/recommend/{item_id}</code></p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>URL Parameters:</strong></p>
+        <ul>
+            <li><code>item_id</code> - ID of the item to find similar items for</li>
+        </ul>
+        <p><strong>Query Parameters:</strong></p>
+        <ul>
+            <li><code>n</code> - Number of recommendations to return (default: 5)</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre>GET /api/content/recommend/item1?n=5</pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Collaborative Recommendations</h3>
+        <p>Get personalized recommendations for a user based on their behavior.</p>
+        <p><strong>URL:</strong> <code>/api/collaborative/recommend/{user_id}</code></p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>URL Parameters:</strong></p>
+        <ul>
+            <li><code>user_id</code> - ID of the user to get recommendations for</li>
+        </ul>
+        <p><strong>Query Parameters:</strong></p>
+        <ul>
+            <li><code>n</code> - Number of recommendations to return (default: 5)</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre>GET /api/collaborative/recommend/user1?n=5</pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Hybrid Recommendations</h3>
+        <p>Get recommendations that combine collaborative filtering, content-based filtering, and style matching.</p>
+        <p><strong>URL:</strong> <code>/api/hybrid/recommend/{user_id}/{item_id}</code></p>
+        <p><strong>Method:</strong> GET</p>
+        <p><strong>URL Parameters:</strong></p>
+        <ul>
+            <li><code>user_id</code> - ID of the user</li>
+            <li><code>item_id</code> - ID of the selected item</li>
+        </ul>
+        <p><strong>Query Parameters:</strong></p>
+        <ul>
+            <li><code>n</code> - Number of recommendations to return (default: 4)</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre>GET /api/hybrid/recommend/user1/item1?n=4</pre>
+    </div>
+</body>
+</html>
